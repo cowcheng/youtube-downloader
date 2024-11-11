@@ -3,20 +3,13 @@ from argparse import ArgumentParser, Namespace
 
 from downloader.configs import LOG_DATEFMT, LOG_FORMAT, LOG_LEVEL
 
+logging.basicConfig(
+    format=LOG_FORMAT,
+    datefmt=LOG_DATEFMT,
+    level=LOG_LEVEL,
+)
 
-def setup_logger() -> logging.Logger:
-    """
-    Initializes and configures the logger for the YouTube Downloader application.
-    Sets up the basic configuration with the specified format, date format, and logging level.
-    Returns a logger instance named 'YoutubeDownloader'.
-    """
-    logging.basicConfig(
-        format=LOG_FORMAT,
-        datefmt=LOG_DATEFMT,
-        level=LOG_LEVEL,
-    )
-    logger = logging.getLogger(name="YoutubeDownloader")
-    return logger
+logger = logging.getLogger(name="YoutubeDownloader")
 
 
 def parse_args() -> Namespace:

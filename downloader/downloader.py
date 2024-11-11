@@ -2,9 +2,7 @@ import os
 
 from yt_dlp import YoutubeDL
 
-from downloader import utils
-
-logger = utils.setup_logger()
+from downloader.utils import logger
 
 
 class YoutubeDownloader:

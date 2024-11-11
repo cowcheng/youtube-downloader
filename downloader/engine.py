@@ -3,10 +3,8 @@ from concurrent.futures import ThreadPoolExecutor
 
 from tqdm import tqdm
 
-from downloader import utils
 from downloader.downloader import YoutubeDownloader
-
-logger = utils.setup_logger()
+from downloader.utils import logger
 
 
 class YoutubeVideoDownloadEngine:
