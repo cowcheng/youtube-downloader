@@ -1,6 +1,6 @@
 # YouTube Downloader
 
-This repository provides a multithreaded Python tool for downloading YouTube videos as video or audio-only files, supporting individual videos or entire channels. Built with [yt_dlp](https://github.com/yt-dlp/yt-dlp), it allows users to select download options, specify output paths, and leverages multithreading for faster performance, making it an efficient tool for offline access and archiving while complying with YouTube’s terms of service.
+This repository provides a multithreaded tool for downloading YouTube videos as video or audio-only files, supporting individual videos or entire channels. Built with [yt_dlp](https://github.com/yt-dlp/yt-dlp), it allows users to select download options, specify output paths, and leverages multithreading for faster performance, making it an efficient tool for offline access and archiving while complying with YouTube’s terms of service.
 
 ## Features
 
