@@ -22,11 +22,11 @@ class YoutubeVideoDownloadEngine:
             saving_path (str): The directory path where downloaded videos will be saved.
             _save_audio_only (bool): If set to True, only audio will be downloaded; otherwise, video will be downloaded.
         """
+        self.num_workers = min(8, os.cpu_count())
 
         logger.info(msg="Initializing Youtube Video Downloader Engine")
         logger.info(msg=f"Number of workers: {self.num_workers}")
 
-        self.num_workers = min(8, os.cpu_count())
 
         logger.info(msg="Initializing YoutubeDownloader")
         logger.info(msg=f"Channel ID: {channel_id}")
