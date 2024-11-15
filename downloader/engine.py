@@ -16,34 +16,40 @@ class YoutubeVideoDownloadEngine:
     ) -> None:
         """
         Initializes the Youtube Video Downloader Engine.
+
         Args:
             channel_id (str): The ID of the YouTube channel to download videos from.
-            saving_path (str): The path where downloaded videos or audio will be saved.
-            _save_audio_only (bool): If True, only audio will be downloaded.
-        Returns:
-            None
+            saving_path (str): The directory path where downloaded videos will be saved.
+            _save_audio_only (bool): If set to True, only audio will be downloaded; otherwise, video will be downloaded.
         """
+
+        logger.info(msg="Initializing Youtube Video Downloader Engine")
+        logger.info(msg=f"Number of workers: {self.num_workers}")
+
         self.num_workers = min(8, os.cpu_count())
+
+        logger.info(msg="Initializing YoutubeDownloader")
+        logger.info(msg=f"Channel ID: {channel_id}")
+        logger.info(msg=f"Saving path: {saving_path}")
+        logger.info(msg=f"Save audio only: {_save_audio_only}")
+
         self.downloader = YoutubeDownloader(
             channel_id=channel_id,
             saving_path=saving_path,
             _save_audio_only=_save_audio_only,
         )
-        logger.info(msg="Initializing Youtube Video Downloader Engine")
-        logger.info(msg=f"Number of workers: {self.num_workers}")
 
     def run(
         self,
     ) -> None:
         """
-        Executes the video downloading process using a thread pool.
-        This method initiates the download of videos from the channel's video URL list.
-        It logs the start and completion of the download process. A `ThreadPoolExecutor` is
-        used with the specified number of workers to perform downloads concurrently.
-        The progress of downloads is displayed using a tqdm progress bar.
-        Returns:
-            None
+        Executes the video download process.
+
+        This method logs the start and completion of the download process, and utilizes a ThreadPoolExecutor
+        to concurrently download videos from the channel's video URL list, displaying a progress bar during
+        the download.
         """
+
         logger.info(msg="Start downloading videos.........")
         with ThreadPoolExecutor(max_workers=self.num_workers) as executor:
             list(

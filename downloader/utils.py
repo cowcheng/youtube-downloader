@@ -14,10 +14,15 @@ logger = logging.getLogger(name="YoutubeDownloader")
 
 def parse_args() -> Namespace:
     """
-    Parses command-line arguments for the YouTube downloader.
+    Parse command-line arguments for the YouTube downloader.
+
     Returns:
-        Namespace: Parsed arguments containing channel_id, saving_path, and save_audio_only.
+        Namespace: Parsed command-line arguments including:
+            channel_id (str): ID of the YouTube channel.
+            saving_path (str): Path to save the downloaded videos.
+            save_audio_only (bool): Flag indicating whether to save audio only.
     """
+
     parser = ArgumentParser()
     parser.add_argument(
         "--channel_id",
